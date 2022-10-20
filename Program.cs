@@ -23,7 +23,13 @@ Console.Clear();
 while(playAgain == "yes"){
 
 Console.WriteLine("Hi there, this is the Guessing Game. Would you like to play on easy, medium, hard, or custom?");
-gameMode = Console.ReadLine();
+gameMode = Console.ReadLine().ToLower();
+
+
+if(gameMode != "easy" && gameMode != "medium" && gameMode != "hard" && gameMode != "custom"){
+Console.WriteLine("Please give a valid Game Mode.");
+
+}
 
 switch(gameMode){
     case "easy":
@@ -36,7 +42,7 @@ while(validNumber != number){
     Console.WriteLine("Guess a number between 1 and 10");
 
 while(isNumber == false){
-        isConverted = false;
+       
       
 userInput = Console.ReadLine();
 isNumber = Int32.TryParse(userInput, out validNumber);
@@ -46,11 +52,11 @@ Console.WriteLine("Please enter a valid response.");
 }else{
     Console.WriteLine("Guess: " + userInput);
 
-    if(validNumber > number){
-        Console.WriteLine(userInput + " is too high.");
-    }else if(validNumber < number){
-        Console.WriteLine(userInput + " is too low.");
-    }isNumber = false;
+    if(guess > number){
+        Console.WriteLine(guess + " is too high.");
+    }else if(guess < number){
+        Console.WriteLine(guess + " is too low.");
+    }
 guesses++;
 }
 
@@ -147,7 +153,7 @@ break;
 }
 
  Console.WriteLine("Would you like to play again? Type 'yes' to play again, type anything else to quit.");
-playAgain = Console.ReadLine();
+playAgain = Console.ReadLine().ToLower();
 
 if(playAgain == "yes"){
     Console.WriteLine("Lets play again!");
